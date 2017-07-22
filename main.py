@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template, flash
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -12,11 +13,14 @@ class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(120))
     body = db.Column(db.String(2000))
+    post_time = db.Column(db.DateTime)
 
-    def __init__(self, title, body):
+    def __init__(self, title, body, post_time=None):
         self.title = title
         self.body = body
-
+        if post_time is None:
+            post_time = datetime.utcnow()
+        self.post_time = post_time
 
 @app.route('/')
 def index():
@@ -53,7 +57,7 @@ def post():
         db.session.commit()
         post_id = str(new_post.id)
         flash("Success! You published a blog post.")
-        return redirect('/newpost')
+        return redirect('/select_blog?id=' + post_id)
 
     return render_template('/newpost.html', title="Write a new post", error=error, title_error=title_error, body_error=body_error)
 

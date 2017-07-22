@@ -14,16 +14,29 @@ h2{
     font-size: 22px;
 }
 
+h3{ 
+    font-size: 20px;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-nav a {
-    color: coral;
+nav {
+    display: inline-block;
+    font-family: sans-serif;
+    background-color: coral;
+    border-radius: 3px;
+    position: relative;
+    text-align: center;
+    padding: .5em;
+}
+
+nav a{
     text-decoration: none;
-    font-style: bold;
-    font-family: sans-serif
+    color: white;
 }
 
 a:hover {
-    color: purple;
+    color: teal;
 }
 
 .form {

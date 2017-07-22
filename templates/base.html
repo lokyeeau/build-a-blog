@@ -9,12 +9,10 @@
         <h1>My Blog</h1>
     </div>
     <nav>
-        <ul>
-            <p><a href='/blog'>Main Page</a></p>
-        </ul>
-        <ul>
-            <p><a href="/newpost">Make a new blog entry</a></p>
-        </ul>
+        <p><a href='/blog'>Main Page</a></p>
+    </nav>
+    <nav>
+        <p><a href="/newpost">Make a new blog entry</a></p>
     </nav>
 
     {% with messages = get_flashed_messages(with_categories=True) %}
